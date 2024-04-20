@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import "./page-layout.css";
+import HomeDashboard from "./HomeDashboard";
+import TempControls from "./TempControls";
+import FrontDoor from "./FrontDoor";
 
-const PageLayout = ({page }) => {
+const PageLayout = () => {
+    const [currentPage, setCurrentPage] = useState("HomeDashboard");
     const [currentTime, setCurrentTime] = useState("");
     const [activeRoom, setActiveRoom] = useState("Living Room");
 
@@ -23,6 +27,23 @@ const PageLayout = ({page }) => {
         setActiveRoom(room);
         };
 
+    const setPage = (pageName) => {
+        setCurrentPage(pageName);
+    };
+
+    const renderPage = () => {
+        switch (currentPage) {
+            case "HomeDashboard":
+                return <HomeDashboard setPage={setPage} />;
+            case  "Temperature":
+                return <TempControls />;
+            case "FrontDoor":
+                return <FrontDoor />;
+            default:
+                return <HomeDashboard setPage={setPage} />;
+        }
+    }
+
     return (
         <div className="page-layout">
             <header>
@@ -40,7 +61,7 @@ const PageLayout = ({page }) => {
                     />
                 </div>
                 <div id="SectionContainer">
-                    {page}
+                    {renderPage()}
                 </div>
             </section>
 

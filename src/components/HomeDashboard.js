@@ -1,15 +1,19 @@
 import React from "react";
 import FeatureWidgets from "./FeatureWidgets";
 
-const HomeDashboard = () => {
+const HomeDashboard = ({ setPage }) => {
+
+    const handleWidgetClick = (widgetName) => {
+        setPage(widgetName);
+    }
 
     return (
         <>
-        <div className="all-controls">
             <FeatureWidgets
                 widgets={["Lighting", "Temperature", "TV", "Music", "Security", "FrontDoor"]}
+                onWidgetClick={handleWidgetClick}
             />
-        </div>
+
         </>
     );
 };

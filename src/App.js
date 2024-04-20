@@ -1,8 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import PageLayout from "./components/PageLayout";
-import HomeDashboard from "./components/HomeDashboard";
-import TempControls from "./components/TempControls"
 
 function App() {
   
@@ -10,9 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <PageLayout
-      page={<HomeDashboard/>}
-      />
+      <PageLayout/>
     </div>
   );
 }

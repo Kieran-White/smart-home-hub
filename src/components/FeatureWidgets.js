@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./feature-widgets.css";
 
 
-const FeatureWidgets = ({ widgets }) => {
+const FeatureWidgets = ({ widgets, onWidgetClick }) => {
+    const handleWidgetClick = (widgetName) => {
+        onWidgetClick (widgetName);
+    }
 
     return (
         <div id="GridContainer">
@@ -12,6 +15,7 @@ const FeatureWidgets = ({ widgets }) => {
                     key={i}
                     id={widgetLabel}
                     className="widget"
+                    onClick={() => handleWidgetClick(widgetLabel)}
                     >
                         <div className="icons">
                             <img src={`./images/${widgetLabel}-Icon.png`} alt={`${widgetLabel} Icon`} />
