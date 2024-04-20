@@ -1,7 +1,7 @@
 import React from "react";
 import TempWidgets from "./TempWidgets";
 
-const TempControls = () => {
+const TempControls = ({rooms}) => {
     const printWidgetLabel = (event) => {
         console.log("Event happening: ", event);
         //do stuff here
@@ -9,7 +9,7 @@ const TempControls = () => {
     return (
         <div className="TempDashboard">
             <TempWidgets
-                widgets={["Kitchen", "DiningRoom"]}
+                widgets={rooms}
                 doSomethingAfterClick={printWidgetLabel}
             />
         </div>

@@ -10,6 +10,8 @@ const PageLayout = () => {
     const [currentPage, setCurrentPage] = useState("HomeDashboard");
     const [currentTime, setCurrentTime] = useState("");
     const [activeRoom, setActiveRoom] = useState("Living Room");
+    const allRooms = ["Kitchen", "Dining Room", "Living Room", "Master Bedroom", "Bathroom"];
+
 
     const updateTime = () => {
         const now = new Date();
@@ -37,7 +39,7 @@ const PageLayout = () => {
             case "HomeDashboard":
                 return <HomeDashboard setPage={setPage} />;
             case  "Temperature":
-                return <TempControls />;
+                return <TempControls rooms={allRooms} />;
             case "FrontDoor":
                 return <FrontDoor />;
             case "Music":
@@ -58,7 +60,7 @@ const PageLayout = () => {
             <section>
                 <div className="room-nav">
                     <NavBar
-                        buttons={["Kitchen", "Dining Room", "Living Room", "Master Bedroom", "Bathroom"]}
+                        buttons={allRooms}
                         doSomethingAfterClick={navigateToRoom}
                         setActiveRoom={setActiveRoom}
                         activeRoom={activeRoom}
