@@ -1,0 +1,35 @@
+:root {
+    --colour-DarkBlue: #051923;
+    --colour-LightGray: #F5F5F5;
+    --colour-DarkerBlue: #0C3850;
+    --colour-DarkTeal: #2D607C;
+    --colour-LightTeal: #62A2A7;
+    --colour-Black: black;
+}
+
+#room-buttons {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    padding-top: 3px;
+}
+
+.navButton {
+    background-color: var(--colour-DarkTeal);
+    color: var(--colour-Black);
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.navButton:hover{
+    background-color: var(--colour-LightTeal);
+}
+
+.active{
+    background-color: #4D8896;
+}
