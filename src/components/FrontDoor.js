@@ -5,7 +5,7 @@ const FrontDoor = () => {
 
     return (
         <>
-        <div className="frontDoorControl">
+        <div id="FrontDoorControl">
             <video></video>
             <button id="OpenDoor-Button">
                 <img src="/Images/Door-Icon.png"/>

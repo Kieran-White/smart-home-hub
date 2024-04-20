@@ -4,6 +4,7 @@ import "./page-layout.css";
 import HomeDashboard from "./HomeDashboard";
 import TempControls from "./TempControls";
 import FrontDoor from "./FrontDoor";
+import MusicPlayer from "./MusicPlayer";
 
 const PageLayout = () => {
     const [currentPage, setCurrentPage] = useState("HomeDashboard");
@@ -39,6 +40,8 @@ const PageLayout = () => {
                 return <TempControls />;
             case "FrontDoor":
                 return <FrontDoor />;
+            case "Music":
+                return <MusicPlayer />;
             default:
                 return <HomeDashboard setPage={setPage} />;
         }
@@ -58,6 +61,7 @@ const PageLayout = () => {
                         buttons={["Kitchen", "Dining Room", "Living Room", "Master Bedroom", "Bathroom"]}
                         doSomethingAfterClick={navigateToRoom}
                         setActiveRoom={setActiveRoom}
+                        activeRoom={activeRoom}
                     />
                 </div>
                 <div id="SectionContainer">

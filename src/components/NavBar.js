@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./nav-bar.css";
 
-const NavBar = ({ buttons, setActiveRoom }) => {
+const NavBar = ({ buttons, setActiveRoom, activeRoom }) => {
     const [clickedId, setClickedId] = useState(-1);
+
+    useEffect(() => {
+        const initialActiveIndex = buttons.findIndex(button => button === activeRoom);
+        setClickedId(initialActiveIndex);
+    }, [activeRoom, buttons]);
     
     const handleClick = (event, id, room) => {
         console.log("Button clicked: ", room); //Remove after
