@@ -8,7 +8,7 @@ const FrontDoor = () => {
         <div id="FrontDoorControl">
             <video></video>
             <button id="OpenDoor-Button">
-                <img src="/Images/Door-Icon.png"/>
+                <img src={require(`../images/Door-Icon.png`)}/>
             </button>
         </div>
         </>
