@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import "./page-layout.css";
 import HomeDashboard from "./HomeDashboard";
+import LightControls from "./LightControls";
 import TempControls from "./TempControls";
 import FrontDoor from "./FrontDoor";
 import MusicPlayer from "./MusicPlayer";
@@ -38,8 +39,10 @@ const PageLayout = () => {
         switch (currentPage) {
             case "HomeDashboard":
                 return <HomeDashboard setPage={setPage} />;
+            case "Lighting":
+                return <LightControls rooms={allRooms} />;
             case  "Temperature":
-                return <TempControls rooms={allRooms} />;
+                return <TempControls rooms={allRooms} activeRoom={activeRoom} setActiveRoom={setActiveRoom} />;
             case "FrontDoor":
                 return <FrontDoor />;
             case "Music":

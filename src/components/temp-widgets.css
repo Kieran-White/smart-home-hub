@@ -1,8 +1,41 @@
 
 .mainTempWidget {
-    /* */
+    display: flex;
+    flex-direction: column;
 }
 
-.mainTempWidget :active {
-    /* */
+.mainTempWidget button{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100px;
+    background-color: #2D607C;
+    border: 1px solid #051923;
+    border-radius: 100%;
+    color: white;
+    font-size: 10px;
+}
+
+.mainTempWidget img {
+    aspect-ratio: 1 / 1;
+    height: 50px;
+}
+
+.mainTempWidget :active button{
+    position: relative;
+    flex-direction: column;
+    color: white;
+    aspect-ratio: 1 / 1;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #ffffff12;
+}
+
+.mainTempWidget.active button{
+    height: 110px;
+    width: 110px;
 }

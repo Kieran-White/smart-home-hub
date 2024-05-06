@@ -30,6 +30,6 @@
     background-color: var(--colour-LightTeal);
 }
 
-.active{
+.navButton.active{
     background-color: #4D8896;
 }

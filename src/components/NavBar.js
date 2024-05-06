@@ -9,8 +9,7 @@ const NavBar = ({ buttons, setActiveRoom, activeRoom }) => {
         setClickedId(initialActiveIndex);
     }, [activeRoom, buttons]);
     
-    const handleClick = (event, id, room) => {
-        console.log("Button clicked: ", room); //Remove after
+    const handleClick = (id, room) => {
         setClickedId(id);
         setActiveRoom(room);
     };
@@ -21,7 +20,7 @@ const NavBar = ({ buttons, setActiveRoom, activeRoom }) => {
                 <button
                     key={i}
                     name={buttonLabel}
-                    onClick={(event) => handleClick(event, i, buttonLabel)}
+                    onClick={() => handleClick(i, buttonLabel)}
                     className={i === clickedId ? "navButton active" : "navButton"}
                 >
                     {buttonLabel}

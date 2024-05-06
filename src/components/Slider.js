@@ -1,18 +1,28 @@
+
 import ReactSlider from "react-slider"
 import "./slider.css"
 
-const Slider = () => {
+const TempSlider = ({ value, onChange }) => {
+    const handleSliderChange = (newValue) => {
+        onChange(newValue);
+    };
+
     return (
-        <ReactSlider
-        className="customSlider"
-        trackClassName="customSlider-track"
-        thumbClassName="customSlider-thumb"
-        markClassName="customSlider-mark"
-        marks={3}
-        min={0}
-        max={45}
-        />
+        <>
+            <label className="degreeLabel">{`${value}°C`}</label>
+            <ReactSlider
+                className="customSlider"
+                trackClassName="customSlider-track"
+                thumbClassName="customSlider-thumb"
+                markClassName="customSlider-mark"
+                marks={5}
+                min={0}
+                max={30}
+                value={value}
+                onChange={handleSliderChange}
+            />
+        </>
     );
 };
 
-export default Slider;
+export default TempSlider;
