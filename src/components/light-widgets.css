@@ -1,0 +1,41 @@
+
+.mainLightWidget {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainLightWidget button{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100px;
+    background-color: #2D607C;
+    border: 1px solid #051923;
+    border-radius: 100%;
+    color: white;
+    font-size: 10px;
+}
+
+.mainLightWidget img {
+    aspect-ratio: 1 / 1;
+    height: 50px;
+}
+
+.mainLightWidget :active button{
+    position: relative;
+    flex-direction: column;
+    color: white;
+    aspect-ratio: 1 / 1;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #ffffff12;
+}
+
+.mainLightWidget.active button{
+    height: 110px;
+    width: 110px;
+}

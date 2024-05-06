@@ -1,0 +1,21 @@
+.LightDashboard {
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    grid-template-areas:
+    "topLeft middle topRight"
+    "bottomLeft middle bottomRight";
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.LightDashboard div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}

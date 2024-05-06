@@ -40,7 +40,7 @@ const PageLayout = () => {
             case "HomeDashboard":
                 return <HomeDashboard setPage={setPage} />;
             case "Lighting":
-                return <LightControls rooms={allRooms} />;
+                return <LightControls rooms={allRooms} activeRoom={activeRoom} setActiveRoom={setActiveRoom} />;
             case  "Temperature":
                 return <TempControls rooms={allRooms} activeRoom={activeRoom} setActiveRoom={setActiveRoom} />;
             case "FrontDoor":

@@ -8,6 +8,10 @@ const LightWidgets = ({ widgets, activeRoom }) => {
     const [turnedOnWidgets, setTurnedOnWidgets] = useState([]);
 
     const handleClick = (event, id) => {
+
+        if (event.target.tagName === "INPUT") {
+            return;
+        }
         setClickedId(id);
         if (clickedId === id && event.currentTarget.classList.contains('active')) {
             if (turnedOnWidgets.includes(id)) {
@@ -26,7 +30,7 @@ const LightWidgets = ({ widgets, activeRoom }) => {
     };
 
     const getIconSource = (id) => {
-        return turnedOnWidgets.includes(id) ? "/images/LightingOn-Icon.png" : "/Images/LightingOff-Icon.png";
+        return turnedOnWidgets.includes(id) ? require(`../images/Lighting-Icon-On.png`) : require(`../images/Lighting-Icon-Off.png`);
     };
 
     return (
