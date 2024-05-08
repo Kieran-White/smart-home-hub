@@ -10,10 +10,9 @@ function App() {
     const createDocumentsForAllRooms = async () => {
       const allRooms = ["Kitchen", "Dining Room", "Living Room", "Master Bedroom", "Bathroom"];
       for (const room of allRooms) {
-        const noSpace = room.replaceAll(/ /g,"_")
         try {
           await createRoomDocument({
-            "_id": noSpace,
+            "_id": room,
             "isLightOn": false,
             "colour": "#FFFFFF",
             "isTempOn": false,

@@ -13,7 +13,6 @@ const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
             widgets.forEach(async (room, index) => {
                 try {
                     const data = await syncToApp(room);
-                    console.log(data);
                     const value = data["colour"];
                     setColourValues(prevValues => {
                         const newColourValues = [...prevValues];
@@ -29,7 +28,7 @@ const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
                     console.error("Error occurred while syncing data: ", error);
                 }
             });
-        }, 50000);
+        }, 1000);
     
         return () => clearInterval(interval);
     }, [widgets, syncToApp]);
