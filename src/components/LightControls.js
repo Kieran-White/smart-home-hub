@@ -2,22 +2,25 @@
 import React from "react";
 import LightWidgets from "./LightWidgets";
 import "./light-controls.css";
+import readDocument from "../database/dbRead";
 
 const LightControls = ({rooms, activeRoom }) => {
-    const useLightSwitch = (event) => {
-        const activeRoomData = rooms.find(room => room === activeRoom);
-        if (activeRoomData.isTurnedOn) {
-            console.log("lightOn");
-        } else {
-            console.log("LightOff");
+
+    const syncToApp = async (roomName) => {
+        try {
+            const data = readDocument(roomName);
+            return data;
+        } catch (error) {
+            console.error("Error occurred while reading document: ", error);
         }
     }
+
     return (
         <div className="LightDashboard">
             <LightWidgets
                 widgets={rooms}
                 activeRoom={activeRoom}
-                doSomethingAfterClick={useLightSwitch}
+                syncToApp={syncToApp}
             />
         </div>
     );
