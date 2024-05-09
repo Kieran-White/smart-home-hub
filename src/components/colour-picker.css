@@ -1,0 +1,11 @@
+
+.colourContainer {
+    width: 30%;
+}
+
+.colourPicker {
+    width: 100%;
+    padding: 0;
+    border-radius: 5px;
+    background-color: #c6cacf;
+}

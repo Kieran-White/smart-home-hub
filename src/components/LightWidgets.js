@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ColourPicker from "./ColourPicker";
 import "./light-widgets.css";
-import updateDocument from "../database/dbUpdate";
+import syncToDb from "../database/syncToDb";
+import syncToApp from "../database/syncToApp";
 
-const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
+const LightWidgets = ({ widgets, activeRoom }) => {
     const [clickedId, setClickedId] = useState(widgets.findIndex(room => room === activeRoom));
     const [colourValues, setColourValues] = useState(Array.from({ length: widgets.length }, () => "#F5F5F5"));
     const [turnedOnWidgets, setTurnedOnWidgets] = useState([]);
@@ -32,19 +33,6 @@ const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
     
         return () => clearInterval(interval);
     }, [widgets, syncToApp]);
-
-    const syncToDb = async (id, data) => {
-        const newRoom = widgets[id];
-        let dataToAdd = {};
-        if (typeof data === "boolean") {
-            dataToAdd = {"isLightOn": data};
-        } else {
-            dataToAdd = {"colour": data};
-        }
-        const response = await updateDocument(newRoom, dataToAdd);
-
-        console.log(response);
-    }
     
 
     const handleClick = (event, id) => {
@@ -55,10 +43,10 @@ const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
         setClickedId(id);
         if (clickedId === id && event.currentTarget.classList.contains('active')) {
             if (turnedOnWidgets.includes(id)) {
-                syncToDb(id, false);
+                syncToDb(id, {"isLightOn": false}, widgets);
                 setTurnedOnWidgets(turnedOnWidgets.filter(item => item !== id));
             } else {
-                syncToDb(id, true);
+                syncToDb(id,{"isLightOn": true}, widgets);
                 setTurnedOnWidgets([...turnedOnWidgets, id]);
             }
         }
@@ -69,7 +57,7 @@ const LightWidgets = ({ widgets, activeRoom, syncToApp }) => {
         const newColourValues = [...colourValues];
         newColourValues[id] = value;
         setColourValues(newColourValues);
-        syncToDb(id, value);
+        syncToDb(id, {"colour": value}, widgets);
     };
 
     const getIconSource = (id) => {
