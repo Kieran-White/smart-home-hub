@@ -2,8 +2,12 @@
 
 const express = require('express');
 const { spawn } = require('child_process');
+const cors = require('cors');
 
 const app = express();
+
+// Use CORS middleware to allow requests from all origins
+app.use(cors());
 
 app.post('/set-led', (req, res) => {
     const { color } = req.body;
