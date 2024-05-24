@@ -11,7 +11,7 @@ app.use(cors());
 
 app.post('/set-led', (req, res) => {
     const { color } = req.body;
-    const pythonProcess = spawn('python', ['led_controller.py', color]);
+    const pythonProcess = spawn('python', ['../src/python/led_controller.py', color]);
 
     pythonProcess.stdout.on('data', (data) => {
         console.log(`Python stdout: ${data}`);
