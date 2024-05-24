@@ -1,4 +1,5 @@
 import pigpio
+import sys
 
 pi = pigpio.pi()
 
@@ -26,3 +27,7 @@ def hex_to_rgb(hexcode): #Gotta flip cause common anode LED
     blue = 255 - int(hexcode[4:6], 16)
 
     return red, green, blue
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    SetLED(*args)

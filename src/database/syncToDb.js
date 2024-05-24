@@ -1,5 +1,5 @@
-import updateDocument from "./dbUpdate";
-import SetLED from "../python/led_controller.py";
+const { spawn } = require('node:child_process');
+const updateDocument = require("./dbUpdate");
 
 const syncToDb = async (id, dataKeyPair, widgets) => {
     const newRoom = widgets[id];
@@ -7,14 +7,31 @@ const syncToDb = async (id, dataKeyPair, widgets) => {
 
     if (newRoom === "Living Room") {
         if ("isLightOn" in dataKeyPair) {
-            if (!dataKeyPair[1]) {
-                SetLED("#000000")
+            if (!dataKeyPair.isLightOn) {
+                callPythonScript(["#000000"]);
             }
         }
         if ("colour" in dataKeyPair) {
-            SetLED(dataKeyPair[1])
+            callPythonScript([dataKeyPair.colour]);
         }
     }
 }
 
-export default syncToDb;
+function callPythonScript(args) {
+    const pythonScript = '../python/led_controller.py';
+    const pythonProcess = spawn('python', [pythonScript, ...args]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`Python stdout: ${data}`);
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.error(`Python stderr: ${data}`);
+    });
+
+    pythonProcess.on('close', (code) => {
+        console.log(`Python process exited with code ${code}`);
+    });
+}
+
+module.exports = syncToDb;
