@@ -1,10 +1,10 @@
-#import pigpio
+import pigpio
 
 pi = pigpio.pi()
 
-RED_PIN = 25 #GPIO Pin Number
-GREEN_PIN = 24 #GPIO Pin Number
-BLUE_PIN = 23 #GPIO Pin Number
+RED_PIN = 25 #GPIO Number
+GREEN_PIN = 24 #GPIO Number
+BLUE_PIN = 23 #GPIO Number
 
 pi.set_mode(RED_PIN, pigpio.OUTPUT)
 pi.set_mode(GREEN_PIN, pigpio.OUTPUT)
