@@ -5,6 +5,7 @@ const syncToDb = async (id, dataKeyPair, widgets) => {
     const newRoom = widgets[id];
     const response = await updateDocument(newRoom, dataKeyPair);
 
+    
     if (newRoom === "Living Room") {
         if ("isLightOn" in dataKeyPair) {
             if (!dataKeyPair[1]) {
