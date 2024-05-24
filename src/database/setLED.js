@@ -6,6 +6,7 @@ const setLED = async (color) => {
             headers: {
                 'Content-Type': 'application/json',
             },
+            mode: 'cors',
             body: JSON.stringify({ color }),
         });
         console.log('LED color set successfully');
