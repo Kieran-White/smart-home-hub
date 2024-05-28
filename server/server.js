@@ -1,13 +1,23 @@
-// server.js
-
 const express = require('express');
 const { spawn } = require('child_process');
 const cors = require('cors');
 
 const app = express();
 
-// Use CORS middleware to allow requests from all origins
-app.use(cors());
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// CORS configuration
+const corsOptions = {
+  origin: 'http://localhost:3000', // Your frontend URL
+  credentials: true,               // Allow credentials (cookies, HTTP authentication)
+  optionsSuccessStatus: 200        // Some legacy browsers choke on 204
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests for all routes
+app.options('*', cors(corsOptions));
 
 app.post('/set-led', (req, res) => {
     const { color } = req.body;

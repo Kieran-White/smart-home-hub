@@ -8,6 +8,7 @@ const updateDocument = async (docId, newData) => {
     const response = await localDB.put(updatedDoc);
     return response;
   } catch (error) {
+    console.error("Error updating Document: ", error.message);
     throw new Error('Error updating document:', error);
   }
 };
